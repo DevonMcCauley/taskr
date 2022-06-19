@@ -1,7 +1,5 @@
-import classes from "./Input.module.css";
-
 const Input = () => {
-	return <input className={classes.input__field} />;
+	return <input className="form-control" />;
 };
 
 export default Input;

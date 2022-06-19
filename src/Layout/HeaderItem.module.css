@@ -1,0 +1,16 @@
+.nav__tab {
+    float: left;
+    cursor: pointer;
+}
+
+.nav__tab div {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav__tab div:hover:not(.active) {
+    background-color: #111;
+}

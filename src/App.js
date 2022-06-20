@@ -4,7 +4,6 @@ import { Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import TaskInput from "./components/Tasks/TaskInput";
-import TaskList from "./components/Tasks/TaskList";
 
 //TODO: Add routing
 function App() {
@@ -13,7 +12,6 @@ function App() {
 			<Header />
 			<div className="container">
 				<TaskInput />
-				<TaskList />
 			</div>
 			<Footer />
 		</Fragment>

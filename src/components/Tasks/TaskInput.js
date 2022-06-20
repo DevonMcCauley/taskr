@@ -38,9 +38,19 @@ const TaskInput = () => {
 		dispatch(addTask(task));
 	};
 
+	const modal = (
+		<Modal
+			handleClose={() => setModalIsOpen(false)}
+			modalIsOpen={modalIsOpen}
+			title="Invalid"
+		>
+			Enter valid task information
+		</Modal>
+	);
+
 	return (
 		<div className="row mt-4">
-			<div className="col-9">
+			<div className="col-12">
 				<div className="row g-2">
 					<Input
 						inputRef={taskNameRef}
@@ -52,16 +62,10 @@ const TaskInput = () => {
 					/>
 				</div>
 			</div>
-			<div className="col">
+			<div className="col mt-3">
 				<Button text={"Add"} onClick={addTaskHandler} />
 			</div>
-			<Modal
-				handleClose={() => setModalIsOpen(false)}
-				modalIsOpen={modalIsOpen}
-				title="Invalid"
-			>
-				Enter valid task information
-			</Modal>
+			{modal}
 		</div>
 	);
 };

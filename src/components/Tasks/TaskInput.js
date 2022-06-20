@@ -1,7 +1,7 @@
-import Input from "../Input";
+import Input from "../UI/Input";
 import { useDispatch } from "react-redux";
 import { addTask } from "../../app/taskSlice";
-import Button from "../Button";
+import Button from "../UI/Button";
 import { useRef } from "react";
 
 // Returns an input field and a button to allow the user to add a task

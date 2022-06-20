@@ -5,6 +5,7 @@ import { Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Button from "./components/Button";
+import TaskList from "./components/Tasks/TaskList";
 
 function App() {
 	return (
@@ -19,8 +20,11 @@ function App() {
 						<Button text={"Add"} />
 					</div>
 				</div>
-				<Footer />
+				<div>
+					<TaskList />
+				</div>
 			</div>
+			<Footer />
 		</Fragment>
 	);
 }

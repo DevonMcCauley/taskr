@@ -25,6 +25,8 @@ const TaskInput = () => {
 			title: taskName,
 			description: taskDescription,
 		};
+		taskNameRef.current.value = "";
+		taskDescRef.current.value = "";
 		dispatch(addTask(task));
 	};
 

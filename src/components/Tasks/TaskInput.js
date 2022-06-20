@@ -4,7 +4,7 @@ import Button from "../UI/Button";
 import { useRef, useState } from "react";
 import Modal from "../UI/Modal/Modal";
 import { ToastContainer, toast } from "react-toastify";
-import { taskActions } from "../../app/taskSlice";
+import { postTaskData } from "../../app/task-actions";
 
 // Returns an input field and a button to allow the user to add a task
 const TaskInput = () => {
@@ -40,7 +40,7 @@ const TaskInput = () => {
 		};
 		taskNameRef.current.value = "";
 		taskDescRef.current.value = "";
-		dispatch(taskActions.addTask(task));
+		dispatch(postTaskData());
 		notify();
 	};
 

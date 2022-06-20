@@ -1,6 +1,5 @@
 import Input from "../UI/Input";
 import { useDispatch } from "react-redux";
-import { addTask } from "../../app/taskSlice";
 import Button from "../UI/Button";
 import { useRef, useState } from "react";
 import Modal from "../UI/Modal/Modal";
@@ -9,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 // Returns an input field and a button to allow the user to add a task
 const TaskInput = () => {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 	const taskNameRef = useRef("");
 	const taskDescRef = useRef("");
 	const notify = () =>
@@ -40,7 +39,7 @@ const TaskInput = () => {
 		};
 		taskNameRef.current.value = "";
 		taskDescRef.current.value = "";
-		dispatch(addTask(task));
+		// dispatch(addTask(task));
 		notify();
 	};
 

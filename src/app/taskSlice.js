@@ -19,9 +19,12 @@ export const taskSlice = createSlice({
 				(task) => task.id !== taskId
 			);
 		},
+		replaceTaskList(state, action) {
+			state.taskList = action.payload.taskList;
+		},
 	},
 });
 
-export const { addTask, removeTask } = taskSlice.actions;
+export const taskActions = taskSlice.actions;
 
-export default taskSlice.reducer;
+export default taskSlice;

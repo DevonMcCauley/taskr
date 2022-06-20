@@ -1,16 +1,15 @@
 import classes from "./TaskItem.module.css";
-import { useDispatch } from "react-redux";
-import { removeTask } from "../../app/taskSlice";
+// import { useDispatch } from "react-redux";
 
 // A single task - displayed in Bootstrap Card
 const TaskItem = (props) => {
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
 	const { title, id, description } = props.task;
 
 	// Called when the task is clicked on - removes the item
 	const removeTaskHandler = () => {
-		dispatch(removeTask(id));
+		// dispatch(removeTask(id));
 	};
 
 	const taskItemClass = `card mb-3 ${classes.taskitem__box}`;

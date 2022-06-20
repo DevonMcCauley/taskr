@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../../app/taskSlice";
 import Button from "../UI/Button";
 import { useRef, useState } from "react";
-import ReactDOM from "react-dom";
-import Modal from "../Modal/Modal";
+import Modal from "../UI/Modal/Modal";
+import { ToastContainer, toast } from "react-toastify";
 
 // Returns an input field and a button to allow the user to add a task
 const TaskInput = () => {
@@ -12,6 +12,11 @@ const TaskInput = () => {
 	const dispatch = useDispatch();
 	const taskNameRef = useRef("");
 	const taskDescRef = useRef("");
+	const notify = () =>
+		toast("Task added!", {
+			theme: "colored",
+			type: "success",
+		});
 
 	// Calls the Redux addTask() function to add a task to the task list
 	const addTaskHandler = () => {
@@ -36,6 +41,7 @@ const TaskInput = () => {
 		taskNameRef.current.value = "";
 		taskDescRef.current.value = "";
 		dispatch(addTask(task));
+		notify();
 	};
 
 	const modal = (
@@ -49,7 +55,7 @@ const TaskInput = () => {
 	);
 
 	return (
-		<div className="row mt-4">
+		<div className="row mt-4 mx-2">
 			<div className="col-12">
 				<div className="row g-2">
 					<Input
@@ -66,6 +72,17 @@ const TaskInput = () => {
 				<Button text={"Add"} onClick={addTaskHandler} />
 			</div>
 			{modal}
+			<ToastContainer
+				position="top-center"
+				autoClose={2000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 		</div>
 	);
 };

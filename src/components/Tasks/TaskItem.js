@@ -1,7 +1,6 @@
 import classes from "./TaskItem.module.css";
 import { useDispatch } from "react-redux";
 import { removeTask } from "../../app/taskSlice";
-import { useRef } from "react";
 
 // A single task - displayed in Bootstrap Card
 const TaskItem = (props) => {

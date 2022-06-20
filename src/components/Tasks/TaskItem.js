@@ -1,3 +1,4 @@
+// A single task - displayed in Bootstrap Card
 const TaskItem = (props) => {
 	return (
 		<div className="card mb-3">

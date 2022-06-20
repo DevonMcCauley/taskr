@@ -1,5 +1,6 @@
-const Input = () => {
-	return <input className="form-control" />;
+// Custom input component
+const Input = (props) => {
+	return <input className="form-control" ref={props.inputRef} />;
 };
 
 export default Input;

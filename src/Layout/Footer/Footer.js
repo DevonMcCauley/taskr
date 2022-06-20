@@ -1,5 +1,6 @@
 import classes from "./Footer.module.css";
 
+// Custom footer component
 const Footer = () => {
 	return (
 		<div className={classes.footer__wrapper}>

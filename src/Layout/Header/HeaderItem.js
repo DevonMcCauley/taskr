@@ -1,5 +1,6 @@
 import classes from "./HeaderItem.module.css";
 
+// Creates a single item in the navbar
 const HeaderItem = (props) => {
 	return (
 		<div className={classes.nav__tab}>

@@ -1,6 +1,6 @@
 import classes from "./Header.module.css";
 import HeaderItem from "./HeaderItem";
-
+// Custom header component - displays the Navbar
 const Header = () => {
 	return (
 		<nav className={classes.nav__wrapper}>

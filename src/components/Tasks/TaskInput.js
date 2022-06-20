@@ -54,6 +54,20 @@ const TaskInput = () => {
 		</Modal>
 	);
 
+	const toastMessage = (
+		<ToastContainer
+			position="top-center"
+			autoClose={2000}
+			hideProgressBar={false}
+			newestOnTop={false}
+			closeOnClick
+			rtl={false}
+			pauseOnFocusLoss
+			draggable
+			pauseOnHover
+		/>
+	);
+
 	return (
 		<div className="row mt-4 mx-2">
 			<div className="col-12">
@@ -72,17 +86,7 @@ const TaskInput = () => {
 				<Button text={"Add"} onClick={addTaskHandler} />
 			</div>
 			{modal}
-			<ToastContainer
-				position="top-center"
-				autoClose={2000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-			/>
+			{toastMessage}
 		</div>
 	);
 };

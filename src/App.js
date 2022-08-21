@@ -2,11 +2,7 @@ import React, { Fragment } from "react";
 import Header from "./Layout/Header";
 
 function App() {
-	return (
-		<Fragment>
-      <Header />
-		</Fragment>
-	);
+	return <div>Hello, World!</div>;
 }
 
 export default App;

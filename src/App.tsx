@@ -5,7 +5,7 @@ import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import Task from "./models/Task";
 import { Container } from "@mui/system";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 function App() {
 	const [tasks, setTasks] = useState<Task[]>([]);

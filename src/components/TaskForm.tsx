@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FormControl, Input, InputLabel, Box, Button } from "@mui/material";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import UIFx from "uifx";
 import Task from "../models/Task";
 
 interface ITaskForm {
@@ -11,17 +11,26 @@ interface ITaskForm {
 
 // Renders the form that allows users to enter new tasks
 const TaskForm = ({ setTasks }: ITaskForm) => {
+	// States
 	const [taskName, setTaskName] = useState("");
 	const [taskDescription, setTaskDescription] = useState("");
+
+	// Sounds
+	const successAudio = require("../assets/sounds/success.wav");
+	const failAudio = require("../assets/sounds/fail.wav");
+	const success = new UIFx(successAudio, { volume: 1.0 });
+	const fail = new UIFx(failAudio, { volume: 1.0 });
 
 	// Called when the form is subbmited - creates a new task
 	const handleTaskSubmission = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (taskName === "") {
 			toast.error("Task name cannot be blank");
+			fail.play();
 			return;
 		} else if (taskDescription === "") {
 			toast.error("Task description cannot be blank");
+			fail.play();
 			return;
 		}
 		const task = new Task(Math.random(), taskName, taskDescription);
@@ -29,6 +38,7 @@ const TaskForm = ({ setTasks }: ITaskForm) => {
 		setTaskName("");
 		setTaskDescription("");
 		ShowTaskAddedToast();
+		success.play();
 	};
 
 	const handleTaskNameChange = (

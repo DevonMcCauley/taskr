@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import TaskForm from "./components/TaskForm";
-import TaskList from "./components/TaskList";
+
 import Task from "./models/Task";
 import { Container } from "@mui/system";
 import { ToastContainer } from "react-toastify";
+import AddTask from "./pages/AddTask";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
 	const [tasks, setTasks] = useState<Task[]>([]);
@@ -18,7 +19,7 @@ function App() {
 	}, []);
 
 	return (
-		<React.Fragment>
+		<BrowserRouter>
 			<ToastContainer
 				theme="colored"
 				position="top-center"
@@ -33,11 +34,15 @@ function App() {
 			/>
 			<Header />
 			<Container sx={{ marginY: 5 }}>
-				<TaskForm setTasks={setTasks} />
-				<TaskList taskList={tasks} />
+				<Routes>
+					<Route
+						path="/"
+						element={<AddTask tasks={tasks} setTasks={setTasks} />}
+					/>
+				</Routes>
 			</Container>
 			<Footer />
-		</React.Fragment>
+		</BrowserRouter>
 	);
 }
 

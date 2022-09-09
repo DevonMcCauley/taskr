@@ -17,6 +17,13 @@ const TaskForm = ({ setTasks }: ITaskForm) => {
 	// Called when the form is subbmited - creates a new task
 	const handleTaskSubmission = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		if (taskName === "") {
+			toast.error("Task name cannot be blank");
+			return;
+		} else if (taskDescription === "") {
+			toast.error("Task description cannot be blank");
+			return;
+		}
 		const task = new Task(Math.random(), taskName, taskDescription);
 		setTasks((prevTasks) => [...prevTasks, task]);
 		setTaskName("");

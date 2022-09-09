@@ -60,7 +60,7 @@ const TaskForm = ({ setTasks }: ITaskForm) => {
 						value={taskName}
 					/>
 				</FormControl>
-				<FormControl fullWidth sx={{ marginTop: 1 }}>
+				<FormControl fullWidth sx={{ marginTop: 3 }}>
 					<InputLabel htmlFor="TaskDescription">
 						Description
 					</InputLabel>

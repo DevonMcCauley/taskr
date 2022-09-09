@@ -4,8 +4,8 @@ import Header from "./components/Header";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import Task from "./models/Task";
-import { Container, Box } from "@mui/system";
-import { Grid, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
 	const [tasks, setTasks] = useState<Task[]>([]);
@@ -19,6 +19,18 @@ function App() {
 
 	return (
 		<React.Fragment>
+			<ToastContainer
+				theme="colored"
+				position="top-center"
+				autoClose={1500}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<Header />
 			<Container sx={{ marginY: 5 }}>
 				<TaskForm setTasks={setTasks} />

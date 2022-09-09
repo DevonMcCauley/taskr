@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import { FormControl, Input, InputLabel, Box, Button } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Task from "../models/Task";
 
@@ -21,7 +23,10 @@ const TaskForm = ({ setTasks }: ITaskForm) => {
 		taskNameRef.current!.value = "";
 		taskDescriptionRef.current!.value = "";
 		setTasks((prevTasks) => [...prevTasks, task]);
+		notify();
 	};
+
+	const notify = () => toast.success("Task Added!");
 
 	return (
 		<Box

@@ -7,6 +7,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
+import UIFx from "uifx";
 
 interface ITaskListProps {
 	taskList: Task[];
@@ -15,11 +16,14 @@ interface ITaskListProps {
 
 const TaskList = ({ taskList, setTasks }: ITaskListProps) => {
 	const [checked] = React.useState([0]);
+	const removeAudio = require("../assets/sounds/remove.wav");
+	const remove = new UIFx(removeAudio, { volume: 1.0 });
 
-	const handleChecked = (value: number) => () => {
+	const handleChecked = (id: number) => () => {
 		// Filters out the selected task
-		let tasks = taskList.filter((item) => item.id !== value);
+		let tasks = taskList.filter((item) => item.id !== id);
 		setTasks(tasks);
+		remove.play();
 	};
 	// Loops through the task list to create a list of 'li' elements
 

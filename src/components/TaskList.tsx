@@ -10,22 +10,16 @@ import Checkbox from "@mui/material/Checkbox";
 
 interface ITaskListProps {
 	taskList: Task[];
+	setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 }
 
-const TaskList = ({ taskList }: ITaskListProps) => {
-	const [checked, setChecked] = React.useState([0]);
+const TaskList = ({ taskList, setTasks }: ITaskListProps) => {
+	const [checked] = React.useState([0]);
 
-	const handleToggle = (value: number) => () => {
-		const currentIndex = checked.indexOf(value);
-		const newChecked = [...checked];
-
-		if (currentIndex === -1) {
-			newChecked.push(value);
-		} else {
-			newChecked.splice(currentIndex, 1);
-		}
-
-		setChecked(newChecked);
+	const handleChecked = (value: number) => () => {
+		// Filters out the selected task
+		let tasks = taskList.filter((item) => item.id !== value);
+		setTasks(tasks);
 	};
 	// Loops through the task list to create a list of 'li' elements
 
@@ -49,7 +43,7 @@ const TaskList = ({ taskList }: ITaskListProps) => {
 					return (
 						<ListItem key={task.id} disablePadding>
 							<ListItemButton
-								onClick={handleToggle(task.id)}
+								onClick={handleChecked(task.id)}
 								dense
 							>
 								<ListItemIcon>

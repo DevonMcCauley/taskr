@@ -8,6 +8,7 @@ interface IAddTask {
 	tasks: Task[];
 	setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 }
+
 // The AddTask page
 const AddTask = ({ tasks, setTasks }: IAddTask) => {
 	return (

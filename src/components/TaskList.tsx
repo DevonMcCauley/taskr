@@ -8,6 +8,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import UIFx from "uifx";
+import Typography from "@mui/material/Typography";
 
 interface ITaskListProps {
 	taskList: Task[];
@@ -25,16 +26,10 @@ const TaskList = ({ taskList, setTasks }: ITaskListProps) => {
 		setTasks(tasks);
 		remove.play();
 	};
-	// Loops through the task list to create a list of 'li' elements
 
-	return (
-		<Box
-			display="flex"
-			width="100%"
-			alignItems="center"
-			justifyContent="center"
-			marginTop={3}
-		>
+	// Loops through the task list to create a list of 'li' elements
+	const renderTaskList = () => {
+		return (
 			<List
 				sx={{
 					maxWidth: 360,
@@ -72,6 +67,25 @@ const TaskList = ({ taskList, setTasks }: ITaskListProps) => {
 					);
 				})}
 			</List>
+		);
+	};
+
+	const renderData = () => {
+		if (taskList.length > 0) {
+			return renderTaskList();
+		} else {
+			return <Typography>No Tasks Found</Typography>;
+		}
+	};
+	return (
+		<Box
+			display="flex"
+			width="100%"
+			alignItems="center"
+			justifyContent="center"
+			marginTop={3}
+		>
+			{renderData()}
 		</Box>
 	);
 };

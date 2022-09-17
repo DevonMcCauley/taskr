@@ -7,20 +7,21 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Task from "./models/Task";
 
+const axios = require("axios").default;
+
 function App() {
 	const [tasks, setTasks] = useState<Task[]>([]);
 
-	// Loads a list of tasks on start
 	useEffect(() => {
-		setTasks((prevTasks) => [
-			{ id: 1, name: "Task 1", description: "Task 1" },
-			{ id: 2, name: "Task 2", description: "Task 2" },
-			{ id: 3, name: "Task 3", description: "Task 3" },
-			{ id: 4, name: "Task 4", description: "Task 4" },
-			{ id: 5, name: "Task 5", description: "Task 5" },
-			{ id: 6, name: "Task 6", description: "Task 6" },
-		]);
-	}, []);
+		const getTasks = async () => {
+			let returnedTasks = await axios({
+				method: "get",
+				url: "http://localhost:8000/tasks",
+			});
+			setTasks(returnedTasks.data.tasks);
+		};
+		getTasks();
+	}, [setTasks]);
 
 	return (
 		<BrowserRouter>

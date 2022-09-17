@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { FormControl, Input, InputLabel, Box, Button } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UIFx from "uifx";

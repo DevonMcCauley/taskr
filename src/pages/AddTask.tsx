@@ -1,7 +1,8 @@
+import { Fragment } from "react";
 import Task from "../models/Task";
 import TaskForm from "../components/TaskForm";
 import TaskList from "../components/TaskList";
-import { Fragment } from "react";
+import Grid from "@mui/material/Grid";
 
 interface IAddTask {
 	tasks: Task[];
@@ -11,8 +12,10 @@ interface IAddTask {
 const AddTask = ({ tasks, setTasks }: IAddTask) => {
 	return (
 		<Fragment>
-			<TaskForm setTasks={setTasks} />
-			<TaskList taskList={tasks} />
+			<Grid container>
+				<TaskForm setTasks={setTasks} />
+				<TaskList taskList={tasks} />
+			</Grid>
 		</Fragment>
 	);
 };

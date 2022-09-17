@@ -17,15 +17,14 @@ function Copyright() {
 	);
 }
 
-
 // The completed Footer componeent
 export default function Footer() {
 	return (
 		<Box
 			component="footer"
 			sx={{
-				py: 2,
-				px: 2,
+				py: 1,
+				px: 1,
 				mt: "auto",
 				position: "fixed",
 				left: 0,

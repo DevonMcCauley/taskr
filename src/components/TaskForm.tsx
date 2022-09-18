@@ -19,6 +19,8 @@ const TaskForm = ({ setTasks }: ITaskForm) => {
 	const [taskName, setTaskName] = useState("");
 	const [taskDescription, setTaskDescription] = useState("");
 
+	const axios = require("axios").default;
+
 	// Sounds
 	const successAudio = require("../assets/sounds/success.wav");
 	const failAudio = require("../assets/sounds/fail.wav");
@@ -26,7 +28,9 @@ const TaskForm = ({ setTasks }: ITaskForm) => {
 	const fail = new UIFx(failAudio, { volume: 1.0 });
 
 	// Called when the form is subbmited - creates a new task
-	const handleTaskSubmission = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleTaskSubmission = async (
+		e: React.FormEvent<HTMLFormElement>
+	) => {
 		e.preventDefault();
 		if (taskName === "") {
 			toast.error("Task name cannot be blank");
@@ -37,8 +41,23 @@ const TaskForm = ({ setTasks }: ITaskForm) => {
 			fail.play();
 			return;
 		}
-		const task = new Task(Math.random(), taskName, taskDescription);
-		setTasks((prevTasks) => [...prevTasks, task]);
+		await axios({
+			method: "post",
+			url: "http://localhost:8000/tasks",
+			data: {
+				name: taskName,
+				description: taskDescription,
+			},
+		});
+		let returnedTasks = await axios({
+			method: "get",
+			url: "http://localhost:8000/tasks",
+		});
+		const { data } = returnedTasks;
+		console.log(data);
+		setTasks(data.tasks);
+
+		// setTasks((prevTasks) => [...prevTasks, task]);
 		setTaskName("");
 		setTaskDescription("");
 		ShowTaskAddedToast();

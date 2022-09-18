@@ -32,7 +32,8 @@ const TaskList = ({ taskList, setTasks }: ITaskListProps) => {
 		return (
 			<List
 				sx={{
-					maxWidth: 360,
+					width: "100%",
+					maxWidth: 250,
 					bgcolor: "background.paper",
 				}}
 			>
@@ -83,7 +84,7 @@ const TaskList = ({ taskList, setTasks }: ITaskListProps) => {
 			width="100%"
 			alignItems="center"
 			justifyContent="center"
-			marginTop={3}
+			marginTop={1}
 		>
 			{renderData()}
 		</Box>

@@ -4,7 +4,7 @@
 
 	const handleClick = () => {
 		// If a task is clicked, remove it from the store
-		// tasksStore.removeTask(task.id);
+		tasksStore.removeTask(task.id);
 	};
 </script>
 

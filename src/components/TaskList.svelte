@@ -22,9 +22,9 @@
 	});
 </script>
 
-<ul>
+<div class="list-group">
 	<!-- Iterate through the tasks list and display them -->
 	{#each fetchedTasks as task (task.id)}
-		<TaskItem title={task.title} />
+		<TaskItem {task} />
 	{/each}
-</ul>
+</div>

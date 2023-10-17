@@ -7,8 +7,6 @@
 
 	let unsubscribe;
 
-	$: console.log(fetchedTasks);
-
 	onMount(() => {
 		// Subscribe to the store & set fetchedTasks to the current value of the store
 		unsubscribe = tasksStore.subscribe((tasks) => {

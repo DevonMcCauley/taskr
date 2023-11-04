@@ -1,16 +1,25 @@
 import { writable } from 'svelte/store';
+import { browser } from '$app/environment';
 
-const tasks = writable([
-	{ id: 1, title: 'Do Laundry' },
-	{ id: 2, title: 'Do Dishes' },
-	{ id: 3, title: 'Do Chores' },
-	{ id: 4, title: 'Do Other Stuff' }
-]);
+// Function to get tasks from localStorage or set an empty array if there's none
+const getLocalStorageTasks = () => {
+	if (!browser) return [];
+
+	return JSON.parse(localStorage.getItem('tasks')) || [];
+};
+
+const tasks = writable(getLocalStorageTasks());
+
+// Subscribe to changes and update localStorage whenever the tasks are updated
+tasks.subscribe((currentTasks) => {
+	if (!browser) return;
+	localStorage.setItem('tasks', JSON.stringify(currentTasks));
+});
 
 const tasksStore = {
 	subscribe: tasks.subscribe,
-	setTasks: (tasksArray) => {
-		tasks.set(tasksArray);
+	fetchTasks: () => {
+		tasks.set(getLocalStorageTasks());
 	},
 	addTask: (taskData) => {
 		const newTask = {

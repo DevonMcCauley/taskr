@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import toast from 'svelte-french-toast';
 	import tasksStore from '../stores/tasks-store';
 
 	let title;
@@ -8,8 +9,7 @@
 	const handleSubmit = () => {
 		// Check that the task title is not empty
 		if (!title && title !== '') {
-			// TODO: Add better error handling & alerts
-			alert('Please enter a task title.');
+			toast.error('Please enter a task title');
 			return;
 		}
 

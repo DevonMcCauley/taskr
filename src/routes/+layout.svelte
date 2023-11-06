@@ -7,19 +7,13 @@
 	import './styles.css';
 </script>
 
+<Header />
+
 <div class="container-fluid">
-	<div class="row">
-		<Header />
-	</div>
-
-	<div class="row">
-		<main>
-			<slot />
-		</main>
-		<Toaster />
-	</div>
-
-	<div class="row">
-		<Footer />
-	</div>
+	<main>
+		<slot />
+	</main>
+	<Toaster />
 </div>
+
+<Footer />

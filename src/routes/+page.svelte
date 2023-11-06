@@ -7,7 +7,7 @@
 	<title>Taskr - Home</title>
 </svelte:head>
 
-<div class="container">
+<div class="container-fluid">
 	<TaskForm />
 	<TaskList />
 </div>

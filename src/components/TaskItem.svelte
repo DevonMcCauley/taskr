@@ -1,6 +1,7 @@
 <script>
 	import tasksStore from '../stores/tasks-store';
 	export let task;
+	export let showDescription;
 
 	const handleClick = () => {
 		// If a task is clicked, remove it from the store
@@ -8,6 +9,11 @@
 	};
 </script>
 
-<button class="list-group-item list-group-item-action" on:click={handleClick}>
-	{task.title}
-</button>
+<div class="card mb-2" on:click={handleClick}>
+	<div class="card-body">
+		<h5 class="card-title">{task.title}</h5>
+		{#if showDescription}
+			<p class="card-text">{task.description}</p>
+		{/if}
+	</div>
+</div>

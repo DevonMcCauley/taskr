@@ -1,5 +1,7 @@
 <script>
 	import toast from 'svelte-french-toast';
+	import PlusCircleDuotone from '~icons/ph/plus-circle-duotone';
+	import EraseDuotone from '~icons/ph/eraser-duotone';
 	import tasksStore from '../stores/tasks-store';
 
 	let title;
@@ -56,9 +58,16 @@
 			/>
 		</div>
 		<div class="col-12 col-lg-3 col-xl-2">
-			<button class="btn btn-outline-primary w-100" type="submit">Add</button>
-			<button class="btn btn-outline-warning w-100 my-2" type="button" on:click={handleClear}
-				>Clear</button
+			<button
+				class="btn btn-outline-primary w-100 d-flex justify-content-center align-items-center"
+				type="submit"
+			>
+				<PlusCircleDuotone class="me-1" />
+				Add</button
+			>
+			<button class="btn btn-outline-warning w-100 my-2" type="button" on:click={handleClear}>
+				<EraseDuotone class="me-1" />
+				Clear</button
 			>
 		</div>
 	</div>

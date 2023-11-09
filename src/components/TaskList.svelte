@@ -1,5 +1,6 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
+	import PencilSlashDuotone from '~icons/ph/pencil-slash-duotone';
 	import tasksStore from '../stores/tasks-store';
 	import TaskItem from './TaskItem.svelte';
 
@@ -58,10 +59,11 @@
 	</CollapseButton> -->
 	<!-- The clear completed button -->
 	<button
-		class="btn btn-danger"
+		class="btn btn-outline-danger"
 		disabled={fetchedTasks.filter((task) => task.completed).length === 0}
 		on:click={handleClearCompleted}
 	>
+		<PencilSlashDuotone class="me-2" />
 		Clear Completed
 	</button>
 {/if}

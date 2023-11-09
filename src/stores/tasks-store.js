@@ -21,9 +21,28 @@ const tasksStore = {
 	fetchTasks: () => {
 		tasks.set(getLocalStorageTasks());
 	},
+	toggleTaskCompleted: (id) => {
+		tasks.update((items) => {
+			return items.map((item) => {
+				if (item.id === id) {
+					return {
+						...item,
+						completed: !item.completed
+					};
+				}
+				return item;
+			});
+		});
+	},
+	clearCompletedTasks: () => {
+		tasks.update((items) => {
+			return items.filter((item) => !item.completed);
+		});
+	},
 	addTask: (taskData) => {
 		const newTask = {
-			...taskData
+			...taskData,
+			completed: false
 		};
 		tasks.update((items) => {
 			return [newTask, ...items];

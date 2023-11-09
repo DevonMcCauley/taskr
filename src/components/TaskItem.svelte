@@ -4,16 +4,23 @@
 	export let showDescription;
 
 	const handleClick = () => {
-		// If a task is clicked, remove it from the store
-		tasksStore.removeTask(task.id);
+		// If a task is clicked, toggle its completed status
+		tasksStore.toggleTaskCompleted(task.id);
 	};
+
+	let completedStyle = 'text-decoration: line-through; color: #ccc';
 </script>
 
 <div class="card mb-2" on:click={handleClick}>
 	<div class="card-body">
-		<h5 class="card-title">{task.title}</h5>
+		<!-- If the task is completed, add the completedStyle class -->
+
+		<h5 class="card-title" style={task.completed ? completedStyle : ''}>
+			{task.title}
+		</h5>
+
 		{#if showDescription}
-			<p class="card-text">{task.description}</p>
+			<p class="card-text" style={task.completed ? completedStyle : ''}>{task.description}</p>
 		{/if}
 	</div>
 </div>

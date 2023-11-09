@@ -38,7 +38,7 @@
 
 <form on:submit={handleSubmit}>
 	<div class="row d-flex w-100 my-3 justify-content-center g-3">
-		<div class="col-12 col-lg-9">
+		<div class="col-12 col-lg-5 col-xl-4">
 			<input
 				bind:value={title}
 				type="text"
@@ -55,7 +55,7 @@
 				aria-label="Task Description"
 			/>
 		</div>
-		<div class="col-12 col-lg-3">
+		<div class="col-12 col-lg-3 col-xl-2">
 			<button class="btn btn-outline-primary w-100" type="submit">Add</button>
 			<button class="btn btn-outline-warning w-100 my-2" type="button" on:click={handleClear}
 				>Clear</button

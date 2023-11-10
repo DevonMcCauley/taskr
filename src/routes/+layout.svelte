@@ -5,7 +5,6 @@
 
 	import 'bootstrap/dist/css/bootstrap.min.css';
 	import './styles.css';
-	import NavBar from '../components/UI/NavBar.svelte';
 </script>
 
 <Header />

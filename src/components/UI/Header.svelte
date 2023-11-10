@@ -1,3 +1,7 @@
-<header class="p-3">
-	<h1 class="text-secondary">Taskr</h1>
+<script>
+	import NavBar from './Navbar.svelte';
+</script>
+
+<header>
+	<NavBar />
 </header>

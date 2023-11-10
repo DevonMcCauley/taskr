@@ -1,5 +1,5 @@
 <script>
-	import BugBeetleDuotone from '~icons/ph/bug-beetle-duotone';
+	import EnvelopeDuotone from '~icons/ph/envelope-duotone';
 	import HouseDuotone from '~icons/ph/house-duotone';
 	import NavItem from './NavItem.svelte';
 
@@ -16,16 +16,16 @@
 			icon: HouseDuotone
 		},
 		{
-			text: 'About',
-			link: '/about',
-			icon: BugBeetleDuotone
+			text: 'Contact',
+			link: '/contact',
+			icon: EnvelopeDuotone
 		}
 	];
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#">Taskr</a>
+		<a class="navbar-brand" href="/">Taskr</a>
 		<button
 			class="navbar-toggler"
 			type="button"
@@ -38,7 +38,7 @@
 		<div class={`collapse navbar-collapse ${isNavCollapsed ? '' : 'show'}`}>
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				{#each navItems as item}
-					<NavItem {item} />
+					<NavItem {item} {toggleNav} />
 				{/each}
 			</ul>
 		</div>

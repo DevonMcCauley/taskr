@@ -23,6 +23,9 @@ const TaskForm = () => {
 		};
 
 		dispatch({ type: "ADD_TASK", payload: task });
+
+		setName("");
+		setDescription("");
 	};
 
 	const handleNameChange = (e) => setName(e.target.value);

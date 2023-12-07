@@ -1,9 +1,9 @@
-import { Inter } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Footer from "@/components/UI/Footer";
+import Header from "@/components/UI/Header";
 import { Providers } from "@/components/Provider";
-const inter = Inter({ subsets: ["latin"] });
+const raleway = Raleway({ subsets: ["latin"] });
 
 export const metadata = {
 	title: "Taskr",
@@ -13,10 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className} min-h-screen flex flex-col`}>
+			<body className={`${raleway.className} min-h-screen flex flex-col`}>
 				<Providers>
 					<Header />
-					<div className="flex-1">{children}</div>
+					<div className="flex-1 mt-8">{children}</div>
 					<Footer />
 				</Providers>
 			</body>

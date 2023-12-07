@@ -5,8 +5,11 @@ const ListItem = ({ task, deleteTask }) => {
 		deleteTask(task.id);
 	};
 	return (
-		<li className="bg-fuchsia-100 border-solid border-2 border-sky-500 rounded-md mb-2 p-3" onClick={handleClick}>
-			<div className="font-bold text-lg"> {task.name}</div>
+		<li
+			className=" items-center gap-x-2 py-3 px-4 text-sm bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg "
+			onClick={handleClick}
+		>
+			<div className="font-bold"> {task.name}</div>
 			<div className="">{task.description}</div>
 		</li>
 	);

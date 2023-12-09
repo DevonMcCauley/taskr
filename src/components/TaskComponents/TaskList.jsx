@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CgErase, CgFlag } from "react-icons/cg";
 import { TasksContext } from "@/contexts/tasksContext";
 import ListItem from "./ListItem";
-import Alert from "./UI/Alert";
+import Alert from "@/components/UI/Alert";
 
 const TaskList = () => {
 	const { state, dispatch } = useContext(TasksContext);
@@ -38,6 +38,8 @@ const TaskList = () => {
 			<button className="btn btn-warning" onClick={handleClick}>
 				<CgErase /> Clear Completed
 			</button>
+
+			<hr className="mt-3" />
 
 			<ul className="mt-3 max-w-lg mx-auto flex flex-col">{taskList}</ul>
 		</div>

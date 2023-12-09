@@ -7,9 +7,6 @@ export function tasksReducer(state, action) {
 		case "ADD_TASK":
 			// Allows us to add a new task to the tasks array
 			return { ...state, tasks: [action.payload, ...state.tasks] };
-		case "DELETE_TASK":
-			// Allows us to delete a task from the tasks array
-			return { ...state, tasks: state.tasks.filter((task) => task.id !== action.payload) };
 		case "TOGGLE_TASK":
 			// Allows us to toggle the completed property of a task
 			return {
@@ -21,6 +18,9 @@ export function tasksReducer(state, action) {
 					return task;
 				}),
 			};
+		case "CLEAR_COMPLETED":
+			// Allows us to clear all completed tasks from the tasks array
+			return { ...state, tasks: state.tasks.filter((task) => !task.completed) };
 		default:
 			return state;
 	}

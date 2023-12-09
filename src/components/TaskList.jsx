@@ -8,12 +8,17 @@ import { CgFlag } from "react-icons/cg";
 const TaskList = () => {
 	const { state, dispatch } = useContext(TasksContext);
 
+	console.log(state.tasks);
 	const handleDelete = (id) => {
 		dispatch({ type: "DELETE_TASK", payload: id });
 	};
 
+	const handleComplete = (id) => {
+		dispatch({ type: "TOGGLE_TASK", payload: id });
+	};
+
 	const taskList = state.tasks.map((task) => {
-		return <ListItem key={task.id} task={task} deleteTask={handleDelete}></ListItem>;
+		return <ListItem key={task.id} task={task} onClick={handleComplete}></ListItem>;
 	});
 
 	const alert = (

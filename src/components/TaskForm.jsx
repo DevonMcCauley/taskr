@@ -33,7 +33,7 @@ const TaskForm = () => {
 	const handleDescriptionChange = (e) => setDescription(e.target.value);
 
 	return (
-		<form onSubmit={handleSubmit} className="flex flex-col gap-3 px-7">
+		<form onSubmit={handleSubmit} className="flex flex-col gap-3 px-7 mx-auto max-w-lg">
 			<input className="border rounded-md p-1" type="text" title="Task Name" placeholder="Task Name" value={name} onChange={handleNameChange} />
 			<input
 				className="border rounded-md p-1 "

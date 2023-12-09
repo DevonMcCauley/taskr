@@ -14,7 +14,7 @@ const TaskList = () => {
 		return <ListItem key={task.id} task={task} deleteTask={handleDelete}></ListItem>;
 	});
 
-	return <ul className="mt-4 px-5 max-w-sm mx-auto flex flex-col">{taskList}</ul>;
+	return <ul className="mt-4 px-5 max-w-lg mx-auto flex flex-col">{taskList}</ul>;
 };
 
 export default TaskList;

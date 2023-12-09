@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useContext } from "react";
+import {CgAdd} from 'react-icons/cg'
 import { TasksContext } from "@/contexts/tasksContext";
 
 const TaskForm = () => {
@@ -44,6 +45,7 @@ const TaskForm = () => {
 				onChange={handleDescriptionChange}
 			/>
 			<button className="btn btn-primary" type="submit">
+				<CgAdd className="text-lg" />
 				Add
 			</button>
 		</form>

@@ -1,14 +1,24 @@
-export const initialState = {
+import { Task } from "@/types/task";
+
+// Now use the Task type in your state and action definitions
+interface TasksState {
+	tasks: Task[];
+}
+
+type TasksAction =
+	| { type: "ADD_TASK"; payload: Task }
+	| { type: "TOGGLE_TASK"; payload: number } // Assuming payload is the task ID
+	| { type: "CLEAR_COMPLETED" };
+
+export const initialState: TasksState = {
 	tasks: [], // initially empty
 };
 
-export function tasksReducer(state, action) {
+export function tasksReducer(state: TasksState, action: TasksAction): TasksState {
 	switch (action.type) {
 		case "ADD_TASK":
-			// Allows us to add a new task to the tasks array
 			return { ...state, tasks: [action.payload, ...state.tasks] };
 		case "TOGGLE_TASK":
-			// Allows us to toggle the completed property of a task
 			return {
 				...state,
 				tasks: state.tasks.map((task) => {
@@ -19,7 +29,6 @@ export function tasksReducer(state, action) {
 				}),
 			};
 		case "CLEAR_COMPLETED":
-			// Allows us to clear all completed tasks from the tasks array
 			return { ...state, tasks: state.tasks.filter((task) => !task.completed) };
 		default:
 			return state;

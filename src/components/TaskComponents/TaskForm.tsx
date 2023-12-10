@@ -19,6 +19,7 @@ const TaskForm: React.FC = () => {
       id: Math.floor(Math.random() * 1000),
       name,
       description,
+      completed: false,
     };
 
     dispatch({ type: 'ADD_TASK', payload: task });

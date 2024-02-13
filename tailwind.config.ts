@@ -1,14 +1,27 @@
-import type { Config } from "tailwindcss";
+import { join } from 'path'
+import type { Config } from 'tailwindcss'
+import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
+import { skeleton } from '@skeletonlabs/tw-plugin'
 
-const config: Config = {
-	content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
-	theme: {},
-	daisyui: {
-		themes: [
-			"emerald", // first one will be the default theme
-		],
+export default {
+	darkMode: 'class',
+	content: ['./src/**/*.{html,js,svelte,ts}', join(require.resolve('@skeletonlabs/skeleton'), '../**/*.{html,js,svelte,ts}')],
+	theme: {
+		extend: {},
 	},
-
-	plugins: [require("daisyui")],
-};
-export default config;
+	plugins: [
+		forms,
+		typography,
+		skeleton({
+			themes: {
+				preset: [
+					{
+						name: 'sahara',
+						enhancements: true,
+					},
+				],
+			},
+		}),
+	],
+} satisfies Config;

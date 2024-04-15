@@ -1,29 +1,19 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Input, Button } from "@nextui-org/react";
-import { useUser } from "@clerk/nextjs";
+import { createTask, getTasks } from "@/app/actions/taskActions";
 
-const TaskForm: React.FC = () => {
-	const apiURL = process.env.NEXT_PUBLIC_API_URL;
+interface TaskFormProps {
+	loadTasks: () => void;
+}
 
+const TaskForm = ({ loadTasks }: TaskFormProps) => {
 	const [taskName, setTaskName] = useState<string>("");
 	const [taskDescription, setTaskDescription] = useState<string>("");
-	const { user } = useUser();
+
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
-		// Make a call to the backend to create a task
-		const response = await fetch(`${apiURL}/tasks`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				name: taskName,
-				description: taskDescription,
-				email: user?.primaryEmailAddress?.emailAddress,
-			}),
-		});
-
+		await createTask(taskName, taskDescription);
+		loadTasks();
 		setTaskName("");
 		setTaskDescription("");
 	};

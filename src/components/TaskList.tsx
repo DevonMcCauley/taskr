@@ -1,9 +1,11 @@
-import React from 'react'
+import TaskItem from "./TaskItem";
 
-const TaskList = () => {
-  return (
-    <div>TaskList</div>
-  )
-}
+const TaskList = ({ tasks, onTaskClick }: any) => {
+	const builtTasks = tasks.map((task: any) => (
+		<TaskItem key={task._id} task={task} onTaskClick={onTaskClick} />
+	));
 
-export default TaskList
+	return <div className="max-w-md mx-auto mt-5">{builtTasks}</div>;
+};
+
+export default TaskList;

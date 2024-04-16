@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Input, Button } from "@nextui-org/react";
-import { createTask, getTasks } from "@/app/actions/taskActions";
+import { createTask, getTasks } from "@/actions/taskActions";
 
 interface TaskFormProps {
 	loadTasks: () => void;

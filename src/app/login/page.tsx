@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from "react";
 import { useUser } from "@/contexts/UserContext";
 import { useRouter } from "next/navigation";
+import { login } from "@/actions/userActions";
 
 const SignInPage: React.FC = () => {
 	const apiURL = process.env.NEXT_PUBLIC_API_URL;
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { user, setUser } = useUser();
+
 	const router = useRouter();
 
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,21 +23,8 @@ const SignInPage: React.FC = () => {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
-		const res = await fetch(`${apiURL}/auth/login`, {
-			credentials: "include",
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				email,
-				password,
-			}),
-		});
-
-		const data = await res.json();
 		// If the data has an id, it means the user is logged in
-
+		const data = await login(email, password);
 		if (data.id) {
 			const { firstName, lastName, email, id } = data;
 			setUser({ firstName, lastName, email, id });

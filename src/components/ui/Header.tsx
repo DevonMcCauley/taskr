@@ -30,7 +30,13 @@ const Header = () => {
 			<NavbarContent justify="end">
 				<NavbarItem></NavbarItem>
 			</NavbarContent>
-			{user ? <Button onClick={handleLogout}>Logout</Button> : ""}
+			{user ? (
+				<Button color="warning" onClick={handleLogout}>
+					Logout
+				</Button>
+			) : (
+				""
+			)}
 		</Navbar>
 	);
 };

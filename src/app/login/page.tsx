@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useUser } from "@/contexts/UserContext";
 import { useRouter } from "next/navigation";
 import { login } from "@/actions/userActions";
+import { Button, Input } from "@nextui-org/react";
 
 const SignInPage: React.FC = () => {
 	const apiURL = process.env.NEXT_PUBLIC_API_URL;
@@ -34,21 +35,36 @@ const SignInPage: React.FC = () => {
 
 	return (
 		<div>
-			<h2>Sign In</h2>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label>Email:</label>
-					<input type="email" value={email} onChange={handleEmailChange} />
-				</div>
-				<div>
-					<label>Password:</label>
-					<input
-						type="password"
-						value={password}
-						onChange={handlePasswordChange}
+			<h2 className="text-center text-3xl">Sign In</h2>
+			<form onSubmit={handleSubmit} className="max-w-sm mx-auto">
+				<div className="mt-4">
+					<Input
+						type="email"
+						value={email}
+						onChange={handleEmailChange}
+						placeholder="Enter your email"
+						label="Email"
 					/>
 				</div>
-				<button type="submit">Sign In</button>
+				<div className="my-4">
+					<Input
+						type="password"
+						value={password}
+						placeholder="Enter your password"
+						onChange={handlePasswordChange}
+						label="Password"
+					/>
+				</div>
+				<div className="flex justify-center">
+					<Button
+						className="w-8/12"
+						type="submit"
+						color="primary"
+						variant="bordered"
+					>
+						Sign In
+					</Button>
+				</div>
 			</form>
 		</div>
 	);

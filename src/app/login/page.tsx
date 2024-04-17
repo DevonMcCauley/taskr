@@ -1,18 +1,15 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useUser } from "@/contexts/UserContext";
 import { useRouter } from "next/navigation";
 import { login } from "@/actions/userActions";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input, Spacer } from "@nextui-org/react";
 import toast from "react-hot-toast";
 
 const SignInPage: React.FC = () => {
-	const apiURL = process.env.NEXT_PUBLIC_API_URL;
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-
-	const { user, setUser } = useUser();
-
+	const { setUser } = useUser();
 	const router = useRouter();
 
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,37 +43,30 @@ const SignInPage: React.FC = () => {
 	};
 
 	return (
-		<div>
-			<h2 className="text-center text-3xl">Login</h2>
-			<form onSubmit={handleSubmit} className="max-w-sm mx-auto">
-				<div className="mt-4">
-					<Input
-						type="email"
-						value={email}
-						onChange={handleEmailChange}
-						placeholder="Enter your email"
-						label="Email"
-					/>
-				</div>
-				<div className="my-4">
-					<Input
-						type="password"
-						value={password}
-						placeholder="Enter your password"
-						onChange={handlePasswordChange}
-						label="Password"
-					/>
-				</div>
-				<div className="flex justify-center">
-					<Button
-						className="w-8/12"
-						type="submit"
-						color="primary"
-						variant="bordered"
-					>
-						Sign In
-					</Button>
-				</div>
+		<div className="flex flex-col items-center justify-center h-screen">
+			<h2 className="text-3xl font-bold mb-4">Login</h2>
+			<form onSubmit={handleSubmit} className="max-w-sm w-full px-4">
+				<Input
+					type="email"
+					value={email}
+					onChange={handleEmailChange}
+					placeholder="Enter your email"
+					label="Email"
+					className="mb-4"
+					width="100%"
+				/>
+				<Input
+					type="password"
+					value={password}
+					placeholder="Enter your password"
+					onChange={handlePasswordChange}
+					label="Password"
+					className="mb-4"
+					width="100%"
+				/>
+				<Button type="submit" color="primary">
+					Sign In
+				</Button>
 			</form>
 		</div>
 	);

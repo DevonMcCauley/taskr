@@ -25,7 +25,7 @@ const Header = () => {
 	return (
 		<Navbar>
 			<NavbarBrand>
-				<p className="font-bold">Taskr</p>
+				<p className="font-bold text-2xl">Taskr</p>
 			</NavbarBrand>
 			<NavbarContent justify="end">
 				<NavbarItem></NavbarItem>

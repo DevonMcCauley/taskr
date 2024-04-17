@@ -4,11 +4,13 @@ import { useUser } from "@/contexts/UserContext";
 import { useRouter } from "next/navigation";
 import { login } from "@/actions/userActions";
 import { Button, Input } from "@nextui-org/react";
+import toast from "react-hot-toast";
 
 const SignInPage: React.FC = () => {
 	const apiURL = process.env.NEXT_PUBLIC_API_URL;
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
 	const { user, setUser } = useUser();
 
 	const router = useRouter();
@@ -24,6 +26,16 @@ const SignInPage: React.FC = () => {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
+		// Validate the email and password
+		if (!email) {
+			toast.error("Please enter your email");
+			return;
+		}
+		if (!password) {
+			toast.error("Please enter your password");
+			return;
+		}
+
 		// If the data has an id, it means the user is logged in
 		const data = await login(email, password);
 		if (data.id) {
@@ -35,7 +47,7 @@ const SignInPage: React.FC = () => {
 
 	return (
 		<div>
-			<h2 className="text-center text-3xl">Sign In</h2>
+			<h2 className="text-center text-3xl">Login</h2>
 			<form onSubmit={handleSubmit} className="max-w-sm mx-auto">
 				<div className="mt-4">
 					<Input

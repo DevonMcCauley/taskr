@@ -31,3 +31,18 @@ export const logout = async () => {
 
 	return data;
 };
+
+export const signup = async (user: any) => {
+	// Make a call to the backend to signup
+	const response = await fetch(`${apiURL}/users`, {
+		method: "POST",
+		credentials: "include",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(user),
+	});
+	const data = await response.json();
+
+	return data;
+};

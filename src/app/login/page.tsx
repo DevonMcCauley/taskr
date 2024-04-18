@@ -6,7 +6,7 @@ import { login } from "@/actions/userActions";
 import { Button, Input, Spacer } from "@nextui-org/react";
 import toast from "react-hot-toast";
 
-const SignInPage: React.FC = () => {
+const LoginPage: React.FC = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { setUser } = useUser();
@@ -42,34 +42,44 @@ const SignInPage: React.FC = () => {
 		}
 	};
 
+	const handleSignupClick = () => {
+		router.push("/signup");
+	};
+
 	return (
 		<div className="flex flex-col items-center justify-center h-screen">
 			<h2 className="text-3xl font-bold mb-4">Login</h2>
+
 			<form onSubmit={handleSubmit} className="max-w-sm w-full px-4">
-				<Input
-					type="email"
-					value={email}
-					onChange={handleEmailChange}
-					placeholder="Enter your email"
-					label="Email"
-					className="mb-4"
-					width="100%"
-				/>
-				<Input
-					type="password"
-					value={password}
-					placeholder="Enter your password"
-					onChange={handlePasswordChange}
-					label="Password"
-					className="mb-4"
-					width="100%"
-				/>
-				<Button type="submit" color="primary">
-					Sign In
-				</Button>
+				<div className="flex flex-col gap-3">
+					<Input
+						type="email"
+						value={email}
+						onChange={handleEmailChange}
+						placeholder="Enter your email"
+						label="Email"
+						width="100%"
+					/>
+					<Input
+						type="password"
+						value={password}
+						placeholder="Enter your password"
+						onChange={handlePasswordChange}
+						label="Password"
+						width="100%"
+					/>
+					<div className="flex flex-col gap-3">
+						<Button type="submit" color="primary">
+							Sign In
+						</Button>
+						<Button onClick={handleSignupClick} color="secondary">
+							Sign Up
+						</Button>
+					</div>
+				</div>
 			</form>
 		</div>
 	);
 };
 
-export default SignInPage;
+export default LoginPage;

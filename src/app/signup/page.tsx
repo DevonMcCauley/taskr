@@ -3,7 +3,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Input, Spacer } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { signup } from "@/actions/userActions";
 

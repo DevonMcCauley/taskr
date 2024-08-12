@@ -14,7 +14,7 @@ export const getTasks = async () => {
 
 export const createTask = async (taskName: string, taskDescription: string) => {
 	// Make a call to the backend to create a task
-	const response = await fetch(`${apiURL}/tasks`, {
+	await fetch(`${apiURL}/tasks`, {
 		method: "POST",
 		credentials: "include",
 		headers: {
@@ -32,7 +32,5 @@ export const deleteTask = async (task: any) => {
 		method: "DELETE",
 		credentials: "include",
 	});
-	const data = await response.json();
-
-	return data;
+	return await response.json();
 };

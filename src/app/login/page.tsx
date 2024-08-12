@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useUser } from "@/contexts/UserContext";
 import { useRouter } from "next/navigation";
 import { login } from "@/actions/userActions";
-import { Button, Input, Spacer } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import toast from "react-hot-toast";
 
 const LoginPage: React.FC = () => {

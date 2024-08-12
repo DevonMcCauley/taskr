@@ -3,6 +3,24 @@
 
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
+export const verifyUser = async () => {
+	try {
+		// Call the verify endpoint to verify the user
+		const response = await fetch(`${apiURL}/auth/verify`, {
+			method: "GET",
+			credentials: "include",
+		});
+		if (response.ok) {
+			return await response.json();
+		} else {
+			return null;
+		}
+	} catch (error) {
+		console.error("Error fetching user data:", error);
+		return null;
+	}
+};
+
 export const login = async (email: string, password: string) => {
 	// Make a call to the backend to login
 	const response = await fetch(`${apiURL}/auth/login`, {
